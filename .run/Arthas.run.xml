@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Arthas" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.taobao.arthas.core.Arthas" />
+    <module name="arthas-core" />
+    <option name="PROGRAM_PARAMETERS" value="-pid 32936 -core C:\Users\Administrator\.arthas\lib\3.6.7\arthas\arthas-core.jar -agent C:\Users\Administrator\.arthas\lib\3.6.7\arthas\arthas-agent.jar" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.taobao.arthas.core.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

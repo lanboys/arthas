@@ -1,5 +1,6 @@
 package demo;
 
+import java.lang.management.ManagementFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -9,6 +10,23 @@ public class MathGame {
     private static Random random = new Random();
 
     private int illegalArgumentCount = 0;
+    private static String PID = "-1";
+    private static long pid = -1;
+
+    static {
+        // https://stackoverflow.com/a/7690178
+        try {
+            String jvmName = ManagementFactory.getRuntimeMXBean().getName();
+            int index = jvmName.indexOf('@');
+
+            if (index > 0) {
+                PID = Long.toString(Long.parseLong(jvmName.substring(0, index)));
+                pid = Long.parseLong(PID);
+            }
+        } catch (Throwable e) {
+            // ignore
+        }
+    }
 
     public static void main(String[] args) throws InterruptedException {
         MathGame game = new MathGame();
@@ -25,7 +43,8 @@ public class MathGame {
             print(number, primeFactors);
 
         } catch (Exception e) {
-            System.out.println(String.format("illegalArgumentCount:%3d, ", illegalArgumentCount) + e.getMessage());
+            System.out.println("PID: " + pid + " " + String.format("illegalArgumentCount:%3d, ",
+                illegalArgumentCount) + e.getMessage());
         }
     }
 
